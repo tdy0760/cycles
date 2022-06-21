@@ -1,4 +1,3 @@
-import json
 
 data = { "foo": ["bar", "baz"], 
 "orange": ["banana", "mango"], 
@@ -11,38 +10,44 @@ data = { "foo": ["bar", "baz"],
  }
 
 
-def walk_cycle_2(v,data,values,counter = 0,cycle = []):
+def walk_cycle(v,data,values,counter = 0,cycle = []):
 
         if v in data.keys() and v in cycle:
-            #add to cycle, cycle could exist
+            
             cycle.append(v)
             return cycle
 
         elif v in data.keys():        
             values = data[v]
+            #add to cycle, cycle could exist
             cycle.append(v)
+            value = data[v][0]
+            data[v][0] = None
             #print(cycle)
-            walk_cycle_2(values[0],data,values,counter,cycle)
+            walk_cycle(value,data,values,counter,cycle)
         else:
             counter+=1
             if counter < len(values):
-                walk_cycle_2(values[counter],data,values,counter,cycle)
+
+                walk_cycle(values[counter],data,values,counter,cycle)
 
 
         return cycle
 
-
-
-minimal_cycles = {}
-for k in data.keys():
-    cycle = walk_cycle_2(k,data,data[k],counter = 0,cycle = [])
-    #check cycle
+def filter_cycle(cycle):
     if cycle[0] == cycle[len(cycle)-1]:
-        if k in cycle:
-            minimal_cycles[k]=cycle
 
-print(minimal_cycles)
+        return cycle
+
+if __name__=='__main__':
+    minimal_cycles = []
+    for k in data.keys():
+        cycle = walk_cycle(k,data,data[k],counter = 0,cycle = [])
+        print(cycle)
+    #cycle = filter_cycle(cycle)
+    #minimal_cycles.append(cycle)
 
 
-#walk_cycle("foo",data["foo"],data,"foo",cycle = [],cycles = [])
+    for c in minimal_cycles:
+        print(c)
 
