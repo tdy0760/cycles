@@ -21,15 +21,28 @@ def test():
                 for n in data[e]:
                     pass
 
-def walk_cycle(key,values,data):
+cycle = []
+last_key = None
+def walk_cycle(key,values,data,last_key,cycle = []):
+    #print(data)
     if key in data.keys():
-        print(key)
         values=data[key]
         for v in values:
             if v in data.keys():
-                walk_cycle(v,data[v],data[:])
+                print(v)
+                cycle.append(v)
+                data.pop(key)    
+                walk_cycle(v,data[v],data,key,cycle)
+
+            elif last_key == v:
+                print(v)
+                cycle.append(v)
+                print(cycle)
+                print("end cycle")
+                return cycle
             else:
                 continue
 
-walk_cycle("foo",data["foo"],data)
+last_key = "foo"
+walk_cycle("foo",data["foo"],data,"foo")
 
