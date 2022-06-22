@@ -34,7 +34,10 @@ def walk_cycle(v,data,values,start,cycle = [],cycles = []):
                 start.remove(v)
             else:
                 #remove v from the end, we will not be chasing twice the same
-                values.remove(v)
+                try:
+                    values.remove(v)
+                except:
+                    pass
 
             cycles.append(cycle)
             
@@ -48,15 +51,19 @@ def walk_cycle(v,data,values,start,cycle = [],cycles = []):
             values = data[v]
             #add to cycle, cycle migh exist, value in keys
             cycle.append(v)
-            if len(data[v][0]) > 0:
+            value = None
+            if len(data[v]) > 0:
                 value = data[v][0]
 
             #when we add value to the cycle we remove it from the start and data
             if v in start:
                 start.remove(v)
-            if v in data[value]:
-                data[value].remove(v)
             
+            try:
+                if v in data[value]:
+                    data[value].remove(v)
+            except KeyError:
+                pass
            
             walk_cycle(value,data,values,start,cycle,cycles)
         else:
