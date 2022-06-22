@@ -48,9 +48,14 @@ def walk_cycle(v,data,values,start,cycle = [],cycles = []):
             values = data[v]
             #add to cycle, cycle migh exist, value in keys
             cycle.append(v)
-            value = data[v][0]
+            if len(data[v][0]) > 0:
+                value = data[v][0]
+
+            #when we add value to the cycle we remove it from the start and data
             if v in start:
                 start.remove(v)
+            if v in data[value]:
+                data[value].remove(v)
             
            
             walk_cycle(value,data,values,start,cycle,cycles)
@@ -68,7 +73,8 @@ def walk_cycle(v,data,values,start,cycle = [],cycles = []):
 
         return cycles
 
-
+def test_results():
+    cycles = ["bar->quexx->bar",]
 
 
 
