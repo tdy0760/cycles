@@ -74,15 +74,19 @@ def walk_cycle(v,data,values,start,cycle = [],cycles = []):
             if v in start:
                 start.remove(v)
             
-
-            walk_cycle(values[0],data,values,start,cycle,cycles)
+            if len(values) > 0:
+                walk_cycle(values[0],data,values,start,cycle,cycles)
 
 
         return cycles
 
 def test_results():
-    cycles = ["bar->quexx->bar",]
+    cycles = ['bar -> quux -> bar',
+            'baz -> baz',
+            'orange -> banana -> monkey -> cow -> orange']
 
+def print_cycle(cycle):
+    
 
 
 
@@ -91,7 +95,7 @@ if __name__=='__main__':
 
     for k in data.keys():
         cycles = walk_cycle(k,data,data[k],data[k],cycle = [],cycles = [])
-        print(cycles)
+        #print(cycles)
         #cycle = filter_cycle(cycle)
         minimal_cycles+=cycles
 
