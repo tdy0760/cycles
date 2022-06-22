@@ -68,10 +68,10 @@ def walk_cycle(v,data,values,start,cycle = [],cycles = []):
 
         return cycles
 
-def filter_cycle(cycle):
-    if cycle[0] == cycle[len(cycle)-1]:
 
-        return cycle
+
+
+
 
 if __name__=='__main__':
     minimal_cycles = []
@@ -81,6 +81,7 @@ if __name__=='__main__':
         print(cycles)
         #cycle = filter_cycle(cycle)
         minimal_cycles+=cycles
+
 
 
     for c in minimal_cycles:
