@@ -1,7 +1,4 @@
 
-from queue import Empty
-
-
 data = { "foo": ["bar", "baz"], 
 "orange": ["banana", "mango"], 
 "bar": ["qux", "quux"], 
@@ -31,11 +28,18 @@ def walk_cycle(v,data,values,start,cycle = [],cycles = []):
             tail = cycle[len(cycle)-1]
             if head !=tail:
                 remove_head(head,tail,cycle)
-            start.remove(v)
+            #removing v from start if in the list
+            #if not in the list that means v is somwhere at the end of the cycle
+            if v in start:
+                start.remove(v)
+            else:
+                #remove v from the end, we will not be chasing twice the same
+                values.remove(v)
+
+            cycles.append(cycle)
+            
+            #if something left in the list go ahead with searching for new cycle
             if len(start) > 0 :
-                #checking next value from the list for cycle
-                #new cycle
-                cycles.append(cycle)
                 walk_cycle(start[0],data,values,start,cycle=[],cycles=cycles) 
             #if no more values in start list, return cycles, proceed with next key in json
             return cycles
@@ -45,17 +49,15 @@ def walk_cycle(v,data,values,start,cycle = [],cycles = []):
             #add to cycle, cycle migh exist, value in keys
             cycle.append(v)
             value = data[v][0]
+            if v in start:
+                start.remove(v)
             
-            #data[v][0] = None
-            #data[v].remove(value)
-            #print(cycle)
            
             walk_cycle(value,data,values,start,cycle,cycles)
         else:
-            #if not in keys, no cycle
+            #if not in keys, no cycle, remove from the list
             values.remove(v)
-            #counter+=1
-            #if counter < len(values):
+            
 
             walk_cycle(values[0],data,values,start,cycle,cycles)
 
@@ -72,9 +74,9 @@ if __name__=='__main__':
 
     for k in data.keys():
         cycles = walk_cycle(k,data,data[k],data[k],cycle = [],cycles = [])
-        print(cycle)
-        cycle = filter_cycle(cycle)
-        minimal_cycles.append(cycle)
+        print(cycles)
+        #cycle = filter_cycle(cycle)
+        minimal_cycles+=cycles
 
 
     for c in minimal_cycles:
