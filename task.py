@@ -9,12 +9,28 @@ data = { "foo": ["bar", "baz"],
  "cow": ["orange"] 
  }
 
+def remove_head(head,tail,cycle):
+    if head != tail:
+        cycle.remove(head)
+        head=cycle[0]
+        remove_head(head,tail,cycle)
+    else:
+        return cycle
+
 
 def walk_cycle(v,data,values,counter = 0,cycle = []):
 
         if v in data.keys() and v in cycle:
             
             cycle.append(v)
+            #check if cycle
+            if cycle[0] == cycle[len(cycle)-1]:
+                return cycle
+            else:
+                head = cycle[0]
+                tail = cycle[len(cycle)-1]
+                remove_head(head,tail,cycle)
+                        
             return cycle
 
         elif v in data.keys():        
@@ -22,8 +38,10 @@ def walk_cycle(v,data,values,counter = 0,cycle = []):
             #add to cycle, cycle could exist
             cycle.append(v)
             value = data[v][0]
+            #remove to return to previous
             data[v][0] = None
             #print(cycle)
+           
             walk_cycle(value,data,values,counter,cycle)
         else:
             counter+=1
@@ -44,8 +62,8 @@ if __name__=='__main__':
     for k in data.keys():
         cycle = walk_cycle(k,data,data[k],counter = 0,cycle = [])
         print(cycle)
-    #cycle = filter_cycle(cycle)
-    #minimal_cycles.append(cycle)
+        cycle = filter_cycle(cycle)
+        minimal_cycles.append(cycle)
 
 
     for c in minimal_cycles:
