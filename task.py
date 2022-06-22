@@ -55,8 +55,12 @@ def walk_cycle(v,data,values,start,cycle = [],cycles = []):
            
             walk_cycle(value,data,values,start,cycle,cycles)
         else:
-            #if not in keys, no cycle, remove from the list
-            values.remove(v)
+            #if not in keys, no cycle, remove from the list of the values and from the start
+            if v in values:
+                values.remove(v)
+
+            if v in start:
+                start.remove(v)
             
 
             walk_cycle(values[0],data,values,start,cycle,cycles)
