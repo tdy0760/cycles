@@ -96,13 +96,6 @@ def walk_cycle(v,data,values,start,cycle = [],cycles = []):
 
     return cycles
 
-def test_results(formatted_cycle):
-    cycles = ['bar -> quux -> bar',
-            'baz -> baz',
-            'orange -> banana -> monkey -> cow -> orange']
-
-    
-    assert formatted_cycle in cycles
 
 def format_cycle(cycle):
     i = 0
@@ -130,8 +123,18 @@ def read_json_data(filename):
     return json_data
 
 
+def find_cycles(**data):
+    minimal_cycles = []
+    for k in data.keys():
+        cycles = walk_cycle(k,data,data[k],data[k],cycle = [],cycles = [])
+    
+    return minimal_cycles
+
 if __name__=='__main__':
 
+    sample_cycles = ['bar -> quux -> bar',
+            'baz -> baz',
+            'orange -> banana -> monkey -> cow -> orange']
 
     minimal_cycles = []
     for k in data.keys():
@@ -141,10 +144,10 @@ if __name__=='__main__':
         minimal_cycles+=cycles
     
     class TestCycle(unittest.TestCase):
-        def test_cycle(self,formatted_cycle, sample_cycle):
-            self.asserEqual(formatted_cycle,sample_cycle)
+        def test_cycle(self):
+            self.assertEquals(format_cycle(minimal_cycles[0]),sample_cycles[0])
 
-
+    unittest.main()
 
     #for c in minimal_cycles:
     #    print(*c,sep=" -> ")
