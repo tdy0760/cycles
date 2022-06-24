@@ -108,7 +108,7 @@ def format_cycle(cycle):
     s = ''
     separator = " -> "
     for e in cycle:
-        if i % 2 == 0:
+        if i % 2 != 0:
             s+=separator
             s+=e
         else:
