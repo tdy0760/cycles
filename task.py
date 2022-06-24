@@ -3,7 +3,7 @@ import unittest
 import json
 
 
-data = { "foo": ["bar", "baz"], 
+sample_data = { "foo": ["bar", "baz"], 
 "orange": ["banana", "mango"], 
 "bar": ["qux", "quux"], 
 "monkey": ["cow", "parrot"], 
@@ -124,30 +124,73 @@ def read_json_data(filename):
 
 
 def find_cycles(**data):
-    minimal_cycles = []
+    cycles = []
     for k in data.keys():
-        cycles = walk_cycle(k,data,data[k],data[k],cycle = [],cycles = [])
-    
-    return minimal_cycles
+        cycle = walk_cycle(k,data,data[k],data[k],cycle = [],cycles = [])
+        cycles+=cycle
+    return cycles
 
-if __name__=='__main__':
+import timeit
 
+
+def run_test():
+    '''
+    sample_cycles - cycles found by hand adequate to privided rules in sample_data delivered by the client
+    the result of the function should be the same
+    '''
     sample_cycles = ['bar -> quux -> bar',
             'baz -> baz',
             'orange -> banana -> monkey -> cow -> orange']
-
-    minimal_cycles = []
-    for k in data.keys():
-        cycles = walk_cycle(k,data,data[k],data[k],cycle = [],cycles = [])
-        #print(cycles)
-        
-        minimal_cycles+=cycles
-    
+    cycles = find_cycles(**sample_data)
     class TestCycle(unittest.TestCase):
-        def test_cycle(self):
-            self.assertEquals(format_cycle(minimal_cycles[0]),sample_cycles[0])
+        def test_cycle1(self):
+            self.assertEqual(format_cycle(cycles[0]),sample_cycles[0])
+        def test_cycle2(self):
+            self.assertEqual(format_cycle(cycles[1]),sample_cycles[1])
+        def test_cycle3(self):
+            self.assertEqual(format_cycle(cycles[2]),sample_cycles[2])
 
     unittest.main()
+
+def measure_time_method1():
+    testcode = '''
+def test():
+    sample_data = { "foo": ["bar", "baz"], 
+                "orange": ["banana", "mango"], 
+                "bar": ["qux", "quux"], 
+                "monkey": ["cow", "parrot"], 
+                "banana": ["mango", "monkey"], 
+                "baz": ["baz"], 
+                "quux": ["bar", "banana"],
+                "cow": ["orange"] 
+    }
+    find_cycles(**sample_data)
+    '''
+    et = timeit.timeit(stmt = testcode )
+    print("Time execution: ",et)
+
+def measure_time_method2():
+    testcode = f"{find_cycles(**sample_data)}"
+    et = timeit.timeit(stmt = testcode )
+    print("Time execution: ",et)
+
+if __name__=='__main__':
+
+    
+ 
+
+
+
+
+    
+    
+    
+
+
+
+
+    
+    
 
     #for c in minimal_cycles:
     #    print(*c,sep=" -> ")
