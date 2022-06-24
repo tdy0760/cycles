@@ -1,5 +1,6 @@
 
-from tkinter.ttk import Separator
+import unittest
+import json
 
 
 data = { "foo": ["bar", "baz"], 
@@ -116,19 +117,23 @@ def format_cycle(cycle):
             i+=1
     return s
 
+class TestCycle(unittest.TestCase):
+    def test_cycle(self,formatted_cycle, sample_cycle):
+        self.asserEqual(formatted_cycle,sample_cycle)
+
 
 if __name__=='__main__':
     minimal_cycles = []
-
+    
     for k in data.keys():
         cycles = walk_cycle(k,data,data[k],data[k],cycle = [],cycles = [])
         #print(cycles)
         #cycle = filter_cycle(cycle)
         minimal_cycles+=cycles
     
-    for c in minimal_cycles:
-        formatted_cycle = format_cycle(c)
-        test_results(formatted_cycle)
+    
+
+
 
     #for c in minimal_cycles:
     #    print(*c,sep=" -> ")
