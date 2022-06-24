@@ -117,21 +117,32 @@ def format_cycle(cycle):
             i+=1
     return s
 
-class TestCycle(unittest.TestCase):
-    def test_cycle(self,formatted_cycle, sample_cycle):
-        self.asserEqual(formatted_cycle,sample_cycle)
+
+def read_json_data(filename):
+    '''
+    filename - path to filename
+    return dict
+    '''
+    json_data = None
+    with open(filename,"r") as f:
+        json_data  = json.load(f)
+    
+    return json_data
 
 
 if __name__=='__main__':
+
+
     minimal_cycles = []
-    
     for k in data.keys():
         cycles = walk_cycle(k,data,data[k],data[k],cycle = [],cycles = [])
         #print(cycles)
-        #cycle = filter_cycle(cycle)
+        
         minimal_cycles+=cycles
     
-    
+    class TestCycle(unittest.TestCase):
+        def test_cycle(self,formatted_cycle, sample_cycle):
+            self.asserEqual(formatted_cycle,sample_cycle)
 
 
 
