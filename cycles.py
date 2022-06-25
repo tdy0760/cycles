@@ -1,5 +1,6 @@
 
 import argparse
+from itertools import cycle
 import json
 
 
@@ -125,6 +126,9 @@ def find_cycles(data: dict) -> list:
     return cycles
 
 
+def print_cycle(cycles: list):
+    for c in cycles:
+        print(format_cycle(c))
 
 
 if __name__=='__main__':
@@ -136,7 +140,7 @@ if __name__=='__main__':
     if args.file:
         sample_data = read_json_data(args.file)
         cycles = find_cycles(sample_data)
-        print(cycles)
+        print_cycle(cycles)
         
 
     
