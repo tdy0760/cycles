@@ -1,0 +1,154 @@
+{
+   "foo": [
+      "mice",
+      "apple",
+      "bar",
+      "paprika",
+      "foo",
+      "baz"
+   ],
+   "bar": [
+      "mice",
+      "cat",
+      "mango",
+      "dog",
+      "foo",
+      "banana"
+   ],
+   "orange": [
+      "foo",
+      "parrot",
+      "baz",
+      "paprika",
+      "mice",
+      "mango"
+   ],
+   "purple": [
+      "parrot",
+      "cat",
+      "mango",
+      "foo",
+      "red",
+      "cow"
+   ],
+   "mice": [
+      "cat",
+      "mice",
+      "orange",
+      "green",
+      "mango",
+      "cow"
+   ],
+   "yellow": [
+      "parrot",
+      "cow",
+      "yellow",
+      "baz",
+      "apple",
+      "bar"
+   ],
+   "cat": [
+      "apple",
+      "mice",
+      "mango",
+      "monkey",
+      "green",
+      "red"
+   ],
+   "red": [
+      "banana",
+      "red",
+      "mango",
+      "bar",
+      "purple",
+      "quux"
+   ],
+   "green": [
+      "orange",
+      "banana",
+      "green",
+      "dog",
+      "quux",
+      "purple"
+   ],
+   "mango": [
+      "red",
+      "orange",
+      "paprika",
+      "yellow",
+      "banana",
+      "parrot"
+   ],
+   "baz": [
+      "mango",
+      "orange",
+      "bar",
+      "paprika",
+      "monkey",
+      "yellow"
+   ],
+   "dog": [
+      "orange",
+      "cow",
+      "green",
+      "mice",
+      "baz",
+      "monkey"
+   ],
+   "banana": [
+      "cat",
+      "bar",
+      "yellow",
+      "mice",
+      "dog",
+      "quux"
+   ],
+   "parrot": [
+      "baz",
+      "green",
+      "yellow",
+      "mango",
+      "red",
+      "banana"
+   ],
+   "apple": [
+      "mango",
+      "paprika",
+      "yellow",
+      "green",
+      "parrot",
+      "bar"
+   ],
+   "cow": [
+      "foo",
+      "green",
+      "yellow",
+      "parrot",
+      "paprika",
+      "cow"
+   ],
+   "paprika": [
+      "paprika",
+      "parrot",
+      "quux",
+      "dog",
+      "green",
+      "orange"
+   ],
+   "monkey": [
+      "mango",
+      "mice",
+      "apple",
+      "foo",
+      "yellow",
+      "red"
+   ],
+   "quux": [
+      "mango",
+      "quux",
+      "dog",
+      "yellow",
+      "foo",
+      "banana"
+   ]
+}
