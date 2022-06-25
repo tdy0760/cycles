@@ -25,19 +25,23 @@ def add_word_to_list(words_list,words,k):
             words.remove(word)
             add_word_to_list(words_list,words,k)
 
-words_sample = {}
+
 '''
 sample2.json - 100
 sample3.json - 1000
 sample4.json - 10000
 '''
-for i in range(1000):
-    k = int(random.randint(0,len(words)-1))
-    words_sample[words[k]] = []
-    words_c = words.copy()
-    for i in range(0,6):
-        add_word_to_list(words_sample[words[k]],words_c,k)
+files = [{'sample2':'100'},{'sample3':'1000','sample4':'10000'}]
+for f in files:
+    words_sample = {}
+    filename,v = f.items()
+  
+    for i in range(v):
+        k = int(random.randint(0,len(words)-1))
+        words_sample[words[k]] = []
+        words_c = words.copy()
+        for i in range(0,6):
+            add_word_to_list(words_sample[words[k]],words_c,k)
         
-        
-with(open('sample4.json','w')) as f:
-    json.dump(words_sample,f,indent=3)
+    with(open(f"{filename}.json",'w')) as f:
+        json.dump(words_sample,f,indent=3)

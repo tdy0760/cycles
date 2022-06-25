@@ -41,7 +41,7 @@ def measure_time_method3():
     '''
         let's test different files and get the time
     '''
-    for i in ['sample.json','sample2.json']:
+    for i in ['sample.json','sample2.json','sample3.json','sample4.json']:
         file_size = os.path.getsize(i)
         with(open(i)) as f:
             sample_data = json.load(f)
