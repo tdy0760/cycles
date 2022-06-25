@@ -39,5 +39,5 @@ for i in range(1000):
         add_word_to_list(words_sample[words[k]],words_c,k)
         
         
-with(open('sample3.json','w')) as f:
+with(open('sample4.json','w')) as f:
     json.dump(words_sample,f,indent=3)
