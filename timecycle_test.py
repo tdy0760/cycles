@@ -2,6 +2,7 @@
 import json
 import cycles
 import timeit
+import os
 
 sample_data = { "foo": ["bar", "baz"], 
 "orange": ["banana", "mango"], 
@@ -37,12 +38,16 @@ def measure_time_method2():
 
 
 def measure_time_method3():
+    '''
+        let's test different files and get the time
+    '''
     for i in ['sample.json','sample2.json']:
+        file_size = os.path.getsize(i)
         with(open(i)) as f:
             sample_data = json.load(f)
             testcode = f"{cycles.find_cycles(sample_data)}"
             et = timeit.timeit(stmt = testcode )
-            print("Time execution: ",et) 
+            print("Time execution: ",et,'File size:',file_size,'bytes') 
         
 
 if __name__ == '__main__':

@@ -26,7 +26,12 @@ def add_word_to_list(words_list,words,k):
             add_word_to_list(words_list,words,k)
 
 words_sample = {}
-for i in range(100):
+'''
+sample2.json - 100
+sample3.json - 1000
+sample4.json - 10000
+'''
+for i in range(1000):
     k = int(random.randint(0,len(words)-1))
     words_sample[words[k]] = []
     words_c = words.copy()
@@ -34,5 +39,5 @@ for i in range(100):
         add_word_to_list(words_sample[words[k]],words_c,k)
         
         
-with(open('sample2.json','w')) as f:
+with(open('sample3.json','w')) as f:
     json.dump(words_sample,f,indent=3)
