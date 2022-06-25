@@ -1,17 +1,8 @@
 
+import argparse
 import unittest
 import json
-
-
-sample_data = { "foo": ["bar", "baz"], 
-"orange": ["banana", "mango"], 
-"bar": ["qux", "quux"], 
-"monkey": ["cow", "parrot"], 
-"banana": ["mango", "monkey"], 
-"baz": ["baz"], 
-"quux": ["bar", "banana"],
- "cow": ["orange"] 
- }
+import timeit
 
 def remove_head(head,tail,cycle):
     '''
@@ -111,7 +102,7 @@ def format_cycle(cycle):
     return s
 
 
-def read_json_data(filename):
+def read_json_data(filename: str) -> dict:
     '''
     filename - path to filename
     return dict
@@ -123,61 +114,33 @@ def read_json_data(filename):
     return json_data
 
 
-def find_cycles(**data):
+def find_cycles(data: dict) -> list:
+    '''
+    data - json data dict
+    return list of cycles
+    '''
     cycles = []
     for k in data.keys():
         cycle = walk_cycle(k,data,data[k],data[k],cycle = [],cycles = [])
         cycles+=cycle
     return cycles
 
-import timeit
 
 
-def run_test():
-    '''
-    sample_cycles - cycles found by hand adequate to privided rules in sample_data delivered by the client
-    the result of the function should be the same
-    '''
-    sample_cycles = ['bar -> quux -> bar',
-            'baz -> baz',
-            'orange -> banana -> monkey -> cow -> orange']
-    cycles = find_cycles(**sample_data)
-    class TestCycle(unittest.TestCase):
-        def test_cycle1(self):
-            self.assertEqual(format_cycle(cycles[0]),sample_cycles[0])
-        def test_cycle2(self):
-            self.assertEqual(format_cycle(cycles[1]),sample_cycles[1])
-        def test_cycle3(self):
-            self.assertEqual(format_cycle(cycles[2]),sample_cycles[2])
-
-    unittest.main()
-
-def measure_time_method1():
-    testcode = '''
-def test():
-    sample_data = { "foo": ["bar", "baz"], 
-                "orange": ["banana", "mango"], 
-                "bar": ["qux", "quux"], 
-                "monkey": ["cow", "parrot"], 
-                "banana": ["mango", "monkey"], 
-                "baz": ["baz"], 
-                "quux": ["bar", "banana"],
-                "cow": ["orange"] 
-    }
-    find_cycles(**sample_data)
-    '''
-    et = timeit.timeit(stmt = testcode )
-    print("Time execution: ",et)
-
-def measure_time_method2():
-    testcode = f"{find_cycles(**sample_data)}"
-    et = timeit.timeit(stmt = testcode )
-    print("Time execution: ",et)
 
 if __name__=='__main__':
+  
+    parser = argparse.ArgumentParser(description="Find cycles in json data.")
+    parser.add_argument('-f','--file',help="file with json data")
+    args = parser.parse_args()
+
+    if args.file:
+        sample_data = read_json_data(args.file)
+        cycles = find_cycles(sample_data)
+        print(cycles)
+        
 
     
- 
 
 
 
