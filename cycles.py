@@ -1,6 +1,5 @@
 
 import argparse
-from itertools import cycle
 import json
 
 
