@@ -1,6 +1,6 @@
 import random
 import json
-ample_data = { "foo": ["bar", "baz"], 
+sample_data = { "foo": ["bar", "baz"], 
 "orange": ["banana", "mango"], 
 "bar": ["qux", "quux"], 
 "monkey": ["cow", "parrot"], 
