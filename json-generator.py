@@ -31,17 +31,19 @@ sample2.json - 100
 sample3.json - 1000
 sample4.json - 10000
 '''
-files = [{'sample2':'100'},{'sample3':'1000','sample4':'10000'}]
+files = [{'sample2':100},{'sample3':1000},{'sample4':10000}]
 for f in files:
     words_sample = {}
-    filename,v = f.items()
+    for filename,v in f.items():
+    
   
-    for i in range(v):
-        k = int(random.randint(0,len(words)-1))
-        words_sample[words[k]] = []
-        words_c = words.copy()
-        for i in range(0,6):
-            add_word_to_list(words_sample[words[k]],words_c,k)
-        
-    with(open(f"{filename}.json",'w')) as f:
-        json.dump(words_sample,f,indent=3)
+        for i in range(0,v):
+            print(i)
+            k = int(random.randint(0,len(words)-1))
+            words_sample[words[k]] = []
+            words_c = words.copy()
+            for i in range(0,random.randint(0,7)):
+                add_word_to_list(words_sample[words[k]],words_c,k)
+            
+        with(open(f"{filename}.json",'w')) as f:
+            json.dump(words_sample,f,indent=3)

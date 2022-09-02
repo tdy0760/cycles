@@ -1,154 +1,112 @@
 {
-   "mice": [
-      "purple",
-      "cow",
-      "bar",
-      "orange",
-      "monkey",
-      "quux"
-   ],
-   "yellow": [
-      "red",
-      "yellow",
-      "banana",
-      "bar",
-      "green",
-      "monkey"
-   ],
-   "dog": [
-      "parrot",
-      "dog",
-      "purple",
-      "yellow",
-      "orange",
-      "foo"
-   ],
-   "apple": [
-      "yellow",
-      "foo",
-      "orange",
-      "mango",
-      "purple",
-      "bar"
-   ],
-   "cow": [
-      "apple",
-      "baz",
-      "parrot",
-      "orange",
-      "cat",
-      "mice"
-   ],
-   "purple": [
-      "parrot",
-      "purple",
-      "cow",
-      "orange",
-      "bar",
-      "yellow"
-   ],
    "banana": [
-      "parrot",
-      "quux",
-      "red",
-      "paprika",
-      "bar",
-      "orange"
-   ],
-   "monkey": [
-      "banana",
+      "monkey",
       "mango",
-      "foo",
-      "baz",
-      "apple",
-      "quux"
-   ],
-   "parrot": [
-      "banana",
       "purple",
-      "mice",
       "baz",
-      "green",
+      "orange",
+      "quux",
       "apple"
    ],
-   "paprika": [
-      "green",
-      "paprika",
-      "parrot",
+   "dog": [
       "monkey",
-      "cat",
-      "orange"
-   ],
-   "bar": [
-      "mango",
-      "apple",
-      "cow",
-      "baz",
+      "orange",
       "foo",
-      "yellow"
+      "cow",
+      "purple",
+      "baz",
+      "banana"
    ],
+   "baz": [],
    "foo": [
-      "cat",
+      "quux",
+      "orange",
+      "yellow",
       "apple",
-      "mango",
-      "paprika",
-      "dog",
+      "red",
       "mice"
    ],
-   "green": [
-      "mice",
-      "cat",
+   "paprika": [
       "parrot",
-      "foo",
+      "banana",
       "monkey",
+      "purple",
+      "foo"
+   ],
+   "yellow": [],
+   "cow": [
+      "orange",
+      "baz",
+      "foo",
+      "cat"
+   ],
+   "monkey": [
       "quux"
    ],
-   "orange": [
-      "apple",
-      "yellow",
-      "cat",
-      "green",
+   "green": [
+      "banana",
+      "paprika",
+      "foo",
+      "dog",
+      "mango"
+   ],
+   "apple": [
+      "paprika",
+      "mice",
       "baz",
-      "monkey"
+      "red",
+      "yellow",
+      "monkey",
+      "banana"
+   ],
+   "orange": [
+      "orange",
+      "monkey",
+      "red",
+      "foo",
+      "yellow",
+      "dog",
+      "paprika"
    ],
    "mango": [
+      "red",
+      "green",
+      "parrot",
+      "banana",
+      "monkey"
+   ],
+   "quux": [
+      "green"
+   ],
+   "purple": [
+      "purple",
       "mice",
-      "cow",
-      "apple",
-      "monkey",
       "mango",
       "paprika"
    ],
-   "quux": [
-      "bar",
-      "banana",
-      "yellow",
-      "red",
-      "dog",
-      "apple"
-   ],
-   "baz": [
-      "foo",
-      "dog",
-      "baz",
+   "bar": [
       "mango",
-      "apple",
       "purple"
    ],
-   "cat": [
-      "cat",
+   "mice": [
+      "green",
       "mice",
-      "banana",
+      "monkey",
+      "yellow"
+   ],
+   "cat": [],
+   "parrot": [
+      "paprika",
+      "purple",
       "bar",
-      "dog",
-      "cow"
+      "mango",
+      "monkey",
+      "parrot"
    ],
    "red": [
-      "bar",
-      "foo",
-      "apple",
-      "cat",
-      "monkey",
-      "quux"
+      "parrot",
+      "mango",
+      "quux",
+      "yellow"
    ]
 }
