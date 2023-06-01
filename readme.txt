@@ -1,5 +1,5 @@
 
-Proble description:
+Problem description:
 
 Given a JSON file such as: 
     { "foo": ["bar", "baz"], "orange": ["banana", "mango"], "bar": ["qux", "quux"], "monkey": ["cow", "parrot"], "banana": ["mango", "monkey"], "baz": ["baz"], "quux": ["bar", "banana"], "cow": ["orange"], ... } 
