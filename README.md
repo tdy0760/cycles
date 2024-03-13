@@ -1,4 +1,4 @@
-# <Cycles>
+# Cycles
 
 ## Description
 
@@ -21,7 +21,7 @@ testing, mocking etc, is allowed.
 ## Usage
 
 DocTest:
-pythoh -m doctest sycles.py
+pythoh -m doctest cycles.py
 
 Run:
 python -f json.data.file cycles.py

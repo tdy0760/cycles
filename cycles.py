@@ -3,7 +3,7 @@ import argparse
 import json
 
 
-def remove_head(head,tail,cycle):
+def remove_head(head,tail,cycle) ->list:
     '''
         if not cycle returns empty list
     '''
@@ -15,7 +15,7 @@ def remove_head(head,tail,cycle):
         return cycle
 
 
-def walk_cycle(v,data,values,start,cycle = [],cycles = []):
+def walk_cycle(v,data,values,start,cycle = [],cycles = []) ->list:
     '''
         v - current search value, cycle begining value
         data - json data
@@ -87,7 +87,7 @@ def walk_cycle(v,data,values,start,cycle = [],cycles = []):
     return cycles
 
 
-def format_cycle(cycle):
+def format_cycle(cycle)-> str:
     i = 0
     s = ''
     separator = " -> "
@@ -101,7 +101,7 @@ def format_cycle(cycle):
     return s
 
 
-def read_json_data(filename: str) -> dict:
+def read_json_data(filename: str) ->dict:
     '''
     filename - path to filename
     return dict
@@ -113,7 +113,7 @@ def read_json_data(filename: str) -> dict:
     return json_data
 
 
-def find_cycles(data: dict) -> list:
+def find_cycles(data: dict) ->list:
     '''
     data - json data dict
     return list of cycles
