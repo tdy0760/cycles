@@ -117,6 +117,9 @@ def find_cycles(data: dict) -> list:
     '''
     data - json data dict
     return list of cycles
+    
+    >>> find_cycles({ "foo": ["bar","baz"],"orange": ["banana","mango"],"bar": ["qux","quux"],"monkey": ["cow","parrot"],"banana": ["mango","monkey"],"baz": ["baz"],"quux": ["bar","banana"],"cow": ["orange"]})
+    [['bar', 'quux', 'bar'], ['baz', 'baz'], ['orange', 'banana', 'monkey', 'cow', 'orange']]
     '''
     cycles = []
     for k in data.keys():
